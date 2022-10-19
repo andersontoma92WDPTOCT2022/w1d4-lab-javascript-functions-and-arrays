@@ -61,7 +61,11 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(aux) {
+  if (aux.length === 0) return null;
+  if (aux.length === 1) return aux[0];
+  return sumNumbers(aux) / aux.length;
+}
 
 // Level 2: Array of strings
 const wordsArr = [
@@ -80,9 +84,9 @@ const wordsArr = [
 function averageWordLength() {}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(aux) {}
 
-// Iteration #5: Unique arrays
+// Iteration #5: Unique arrays ++++++++++++++++++
 const wordsUnique = [
   'crab',
   'poison',
@@ -97,8 +101,19 @@ const wordsUnique = [
   'bring',
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(original) {
+  if (original.length === 0) return null;
+  const unicos = [original[0]]; // primeiro é parte do conjunto, certeza
+  for (let elemento in original) {
+    if (unicos.includes(original[elemento])) {
+      //nao faz nada
+    } else {
+      unicos.push(original[elemento]);
+    }
+  }
+  return unicos;
+}
+console.log(uniquifyArray(wordsUnique));
 // Iteration #6: Find elements
 const wordsFind = [
   'machine',
