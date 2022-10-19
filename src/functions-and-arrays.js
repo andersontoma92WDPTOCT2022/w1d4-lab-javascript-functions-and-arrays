@@ -126,7 +126,10 @@ const wordsFind = [
   'disobedience',
 ];
 
-function doesWordExist() {}
+function doesWordExist(arOriginal, chave) {
+  if (arOriginal.length === 0) return null;
+  return arOriginal.includes(chave);
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -143,7 +146,13 @@ const wordsCount = [
   'matter',
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrOriginal, chave) {
+  let arrFiltrado;
+  arrFiltrado = arrOriginal.filter((elemento) => elemento === chave);
+  console.log(arrFiltrado);
+  return arrFiltrado.length;
+}
+howManyTimes(wordsCount);
 
 // Iteration #8: Bonus
 const matrix = [
