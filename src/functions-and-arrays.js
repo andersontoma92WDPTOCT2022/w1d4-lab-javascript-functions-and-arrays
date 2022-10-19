@@ -224,7 +224,16 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(numberArr) {
+  let maiorAtual = 0;
+  for (i = 0; i < numberArr - 3; i++) {
+    aux =
+      numberArr[j][i] *
+      numberArr[j][i + 1] *
+      numberArr[j][i + 2] *
+      numberArr[j][i + 3];
+  }
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
