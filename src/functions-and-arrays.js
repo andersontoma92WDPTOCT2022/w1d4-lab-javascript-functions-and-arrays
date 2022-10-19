@@ -80,8 +80,12 @@ const wordsArr = [
   'fuel',
   'palace',
 ];
-
-function averageWordLength() {}
+// Bonus - Iteration #4.2
+function averageWordLength(wordsArr) {
+  if (wordsArr.length === 0) return null;
+  const lengthArr = wordsArr.map((item) => item.length);
+  return averageNumbers(lengthArr);
+}
 
 // Bonus - Iteration #4.1
 function avg(aux) {}
