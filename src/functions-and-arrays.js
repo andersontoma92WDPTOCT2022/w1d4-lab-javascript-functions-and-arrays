@@ -249,7 +249,7 @@ function greatestProduct(numberArr) {
   let m2 = matrizShiftada(matriz);
   let m3 = matrizShiftada(m2);
   let m4 = matrizShiftada(m3);
-
+  //matriz dos maiores
   let multipArr = [];
 
   for (i = 0; i < m4[0].length; i++) {
