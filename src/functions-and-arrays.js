@@ -233,45 +233,38 @@ const matrix = [
   ],
 ];
 console.log('=================================');
+function matrizShiftada(matrizInicial) {
+  let aux = Array.from(matrizInicial);
+  aux.map((cadaArr) => cadaArr.shift());
+  aux.pop();
+  return aux;
+}
+console.log('=================================');
+
 function greatestProduct(numberArr) {
   let matriz = Array.from(numberArr);
   // mais facil fazer o shif das matrizes e depois multiplicar com indice igual
-  let m2 = Array.from(matriz);
-  m2.map((cadaArr) => cadaArr.shift());
-  m2.shift();
-  console.log(m2);
-
-  let m3 = Array.from(m2);
-  m3.map((cadaArr) => cadaArr.shift());
-  m3.shift();
-
-  let m4 = Array.from(m3);
-  m4.map((cadaArr) => cadaArr.shift());
-  m4.shift();
+  // evitar fazer shifts m(i+1)*m(i+2).. durante as multiplicações
+  //versões sem primeira linha/coluna
+  let m2 = matrizShiftada(matriz);
+  let m3 = matrizShiftada(m2);
+  let m4 = matrizShiftada(m3);
 
   let multipArr = [];
 
-  for (i = 0; i < m4.length; i++) {
-    for (j = 0; j < m4.length; j++) {
+  for (i = 0; i < m4[0].length; i++) {
+    for (j = 0; j < m4[0].length; j++) {
       multipArr.push(matriz[i][j] * m2[i][j] * m3[i][j] * m4[i][j]);
     }
   }
-  //console.log(multipArr);
+  console.log(multipArr);
   //agora o reverso tbm
   matriz = Array.from(numberArr).map((cadaArr) => cadaArr.reverse());
   //console.log(matriz);
+  m2 = matrizShiftada(matriz);
+  m3 = matrizShiftada(m2);
+  m4 = matrizShiftada(m3);
 
-  m2 = Array.from(matriz);
-  m2.map((cadaArr) => cadaArr.shift());
-  m2.shift();
-
-  m3 = Array.from(m2);
-  m3.map((cadaArr) => cadaArr.shift());
-  m3.shift();
-
-  m4 = Array.from(m3);
-  m4.map((cadaArr) => cadaArr.shift());
-  m4.shift();
   //m4[0].length, pois é multidimencional , mas quadrado(2d)x4 camadas
 
   for (i = 0; i < m4[0].length; i++) {
@@ -280,6 +273,7 @@ function greatestProduct(numberArr) {
     }
   }
   //retorna o maximo do array de multiplicações
+  console.log(Math.max(multipArr.reduce((a, b) => Math.max(a, b))));
   return Math.max(multipArr.reduce((a, b) => Math.max(a, b)));
 }
 greatestProduct(matrix);
