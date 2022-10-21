@@ -233,6 +233,7 @@ const matrix = [
   ],
 ];
 console.log('=================================');
+// usada na 8.2
 function matrizShiftada(matrizInicial) {
   let aux = Array.from(matrizInicial);
   aux.map((cadaArr) => cadaArr.shift());
@@ -246,10 +247,10 @@ function greatestProduct(numberArr) {
   // mais facil fazer o shif das matrizes e depois multiplicar com indice igual
   // evitar fazer shifts m(i+1)*m(i+2).. durante as multiplicações
   //versões sem primeira linha/coluna
-  let m2 = matrizShiftada(matriz);
+  let m2 = matrizShiftada(matriz); //sem a 1ª linha/coluna da fornecida
   let m3 = matrizShiftada(m2);
   let m4 = matrizShiftada(m3);
-  //matriz dos maiores
+  //matriz das multiplicações
   let multipArr = [];
 
   for (i = 0; i < m4[0].length; i++) {
@@ -277,7 +278,7 @@ function greatestProduct(numberArr) {
   return Math.max(multipArr.reduce((a, b) => Math.max(a, b)));
 }
 greatestProduct(matrix);
-
+//-------------------fim--------------------
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
