@@ -53,9 +53,18 @@ function sumNumbers(arrayNumbers) {
     );
   } else return 0;
 }
-
+console.log('****************');
 // Iteration #3.1 Bonus:
-function sum() {}
+
+// apenas testando a função erro
+function sum(auxArr) {
+  for (let i in auxArr)
+    if (typeof auxArr[i] !== 'object') {
+      console.log(auxArr[i]);
+      throw new Error("Unsupported data type sir or ma'am");
+    }
+}
+sum([1, 2, 'jkflsa']);
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
