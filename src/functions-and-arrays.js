@@ -64,7 +64,7 @@ function sum(auxArr) {
       throw new Error("Unsupported data type sir or ma'am");
     }
 }
-sum([1, 2, 'jkflsa']);
+//sum([1, 2, 'jkflsa']);
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -232,17 +232,57 @@ const matrix = [
     48,
   ],
 ];
-
+console.log('=================================');
 function greatestProduct(numberArr) {
-  let maiorAtual = 0;
-  for (i = 0; i < numberArr - 3; i++) {
-    aux =
-      numberArr[j][i] *
-      numberArr[j][i + 1] *
-      numberArr[j][i + 2] *
-      numberArr[j][i + 3];
+  let matriz = Array.from(numberArr);
+  // mais facil fazer o shif das matrizes e depois multiplicar com indice igual
+  let m2 = Array.from(matriz);
+  m2.map((cadaArr) => cadaArr.shift());
+  m2.shift();
+  console.log(m2);
+
+  let m3 = Array.from(m2);
+  m3.map((cadaArr) => cadaArr.shift());
+  m3.shift();
+
+  let m4 = Array.from(m3);
+  m4.map((cadaArr) => cadaArr.shift());
+  m4.shift();
+
+  let multipArr = [];
+
+  for (i = 0; i < m4.length; i++) {
+    for (j = 0; j < m4.length; j++) {
+      multipArr.push(matriz[i][j] * m2[i][j] * m3[i][j] * m4[i][j]);
+    }
   }
+  //console.log(multipArr);
+  //agora o reverso tbm
+  matriz = Array.from(numberArr).map((cadaArr) => cadaArr.reverse());
+  //console.log(matriz);
+
+  m2 = Array.from(matriz);
+  m2.map((cadaArr) => cadaArr.shift());
+  m2.shift();
+
+  m3 = Array.from(m2);
+  m3.map((cadaArr) => cadaArr.shift());
+  m3.shift();
+
+  m4 = Array.from(m3);
+  m4.map((cadaArr) => cadaArr.shift());
+  m4.shift();
+  //m4[0].length, pois é multidimencional , mas quadrado(2d)x4 camadas
+
+  for (i = 0; i < m4[0].length; i++) {
+    for (j = 0; j < m4[0].length; j++) {
+      multipArr.push(matriz[i][j] * m2[i][j] * m3[i][j] * m4[i][j]);
+    }
+  }
+  //retorna o maximo do array de multiplicações
+  return Math.max(multipArr.reduce((a, b) => Math.max(a, b)));
 }
+greatestProduct(matrix);
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
