@@ -237,7 +237,7 @@ console.log('=================================');
 function matrizShiftada(matrizInicial) {
   let aux = Array.from(matrizInicial);
   aux.map((cadaArr) => cadaArr.shift());
-  aux.pop();
+  aux.shift();
   return aux;
 }
 console.log('=================================');
@@ -252,10 +252,13 @@ function greatestProduct(numberArr) {
   let m4 = matrizShiftada(m3);
   //matriz das multiplicações
   let multipArr = [];
+  //diagonal começa com oqual item da matriz principal
+  let headDiagonal = [];
 
-  for (i = 0; i < m4[0].length; i++) {
+  for (i = 0; i < m4.length; i++) {
     for (j = 0; j < m4[0].length; j++) {
       multipArr.push(matriz[i][j] * m2[i][j] * m3[i][j] * m4[i][j]);
+      headDiagonal.push([i, j]);
     }
   }
   console.log(multipArr);
@@ -268,13 +271,18 @@ function greatestProduct(numberArr) {
 
   //m4[0].length, pois é multidimencional , mas quadrado(2d)x4 camadas
 
-  for (i = 0; i < m4[0].length; i++) {
+  for (i = 0; i < m4.length; i++) {
     for (j = 0; j < m4[0].length; j++) {
       multipArr.push(matriz[i][j] * m2[i][j] * m3[i][j] * m4[i][j]);
+      headDiagonal.push([i, j]);
     }
   }
   //retorna o maximo do array de multiplicações
-  console.log(Math.max(multipArr.reduce((a, b) => Math.max(a, b))));
+  let max = Math.max(multipArr.reduce((a, b) => Math.max(a, b)));
+  console.log(max, '<-- maior');
+  console.log(headDiagonal);
+  console.log(multipArr.indexOf(max), '<-- ordem');
+  console.log(headDiagonal[multipArr.indexOf(max)], '<--');
   return Math.max(multipArr.reduce((a, b) => Math.max(a, b)));
 }
 greatestProduct(matrix);
